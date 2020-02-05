@@ -163,6 +163,12 @@ if ! docker ps ; then
   exit 1
 fi
 
+# Setup SWAP
+fallocate -l 1G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
 systemctl enable "buildkite-agent"
 systemctl start "buildkite-agent"
 
