@@ -65,6 +65,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/install-zephyr-tools.sh"
+    },
+    {
+      "type": "shell",
       "inline": [
         "rm /home/ec2-user/.ssh/authorized_keys"
       ]
