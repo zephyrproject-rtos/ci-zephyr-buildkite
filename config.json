@@ -1,0 +1,42 @@
+[
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "buildkite"
+  },
+  {
+    "ParameterKey": "EnableCostAllocationTags",
+    "ParameterValue": "true"
+  },
+  {
+    "ParameterKey": "CostAllocationTagName",
+    "ParameterValue": "zephyr:ci"
+  },
+  {
+    "ParameterKey": "CostAllocationTagValue",
+    "ParameterValue": "buildkite-zephyr"
+  },
+  {
+    "ParameterKey": "EnableAgentGitMirrorsExperiment",
+    "ParameterValue": "true"
+  },
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "c5a.large"
+  },
+  {
+    "ParameterKey": "RootVolumeSize",
+    "ParameterValue": "30"
+  },
+  {
+    "ParameterKey": "MaxSize",
+    "ParameterValue": "120"
+  },
+  {
+    "ParameterKey": "ScaleOutFactor",
+    "ParameterValue": "1.0"
+  },
+  {
+    "ParameterKey": "ScaleInIdlePeriod",
+    "ParameterValue": "360"
+  }
+]
