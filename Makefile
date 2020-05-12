@@ -61,12 +61,12 @@ build/aws-stack.yml:
 # -----------------------------------------
 # AMI creation with Packer
 
-packer: packer-linux.output packer-windows.output
+packer: packer-linux.output
 
-build/mappings.yml: build/linux-ami.txt build/windows-ami.txt
+build/mappings.yml: build/linux-ami.txt
 	mkdir -p build
-	printf "Mappings:\n  AWSRegion2AMI:\n    %q : { linux: %q, windows: %q }\n" \
-		"$(AWS_REGION)" $$(cat build/linux-ami.txt) $$(cat build/windows-ami.txt) > $@
+	printf "Mappings:\n  AWSRegion2AMI:\n    %q : { linux: %q }\n" \
+		"$(AWS_REGION)" $$(cat build/linux-ami.txt) > $@
 
 build/linux-ami.txt: packer-linux.output env-AWS_REGION
 	mkdir -p build
