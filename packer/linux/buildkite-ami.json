@@ -93,6 +93,10 @@
     },
     {
       "type": "shell",
+      "script": "scripts/install-zephyr-module-cache.sh"
+    },
+    {
+      "type": "shell",
       "inline": [
         "rm /home/ec2-user/.ssh/authorized_keys"
       ]
