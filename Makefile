@@ -75,7 +75,7 @@ build/linux-amd64-ami.txt: packer-linux-amd64.output env-AWS_REGION
 	grep -Eo "$(AWS_REGION): (ami-.+)" $< | cut -d' ' -f2 | xargs echo -n > $@
 
 # Build linux packer image
-packer-linux-amd64.output: $(PACKER_LINUX_FILES) build/s3secrets-helper-linux-amd64
+packer-linux-amd64.output: $(PACKER_LINUX_FILES) build/s3secrets-helper-linux-amd64 env-STACK_NAME
 	docker run \
 		-e AWS_DEFAULT_REGION  \
 		-e AWS_PROFILE \
@@ -89,6 +89,7 @@ packer-linux-amd64.output: $(PACKER_LINUX_FILES) build/s3secrets-helper-linux-am
 		-w /src/packer/linux \
 		hashicorp/packer:$(PACKER_VERSION) build -timestamp-ui -var 'region=$(AWS_REGION)' \
 			-var 'arch=x86_64' -var 'goarch=amd64' -var 'instance_type=$(AMD64_INSTANCE_TYPE)' \
+			-var 'stack_name=$(STACK_NAME)' \
 			buildkite-ami.json | tee $@
 
 build/linux-arm64-ami.txt: packer-linux-arm64.output env-AWS_REGION
@@ -110,6 +111,7 @@ packer-linux-arm64.output: $(PACKER_LINUX_FILES) build/s3secrets-helper-linux-ar
 		-w /src/packer/linux \
 		hashicorp/packer:$(PACKER_VERSION) build -timestamp-ui -var 'region=$(AWS_REGION)' \
 			-var 'arch=arm64' -var 'goarch=arm64' -var 'instance_type=$(ARM64_INSTANCE_TYPE)' \
+			-var 'stack_name=$(STACK_NAME)' \
 			buildkite-ami.json | tee $@
 
 build/windows-amd64-ami.txt: packer-windows-amd64.output env-AWS_REGION
