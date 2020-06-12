@@ -2,7 +2,8 @@
   "variables": {
     "region": "us-east-1",
     "arch": "x86_64",
-    "instance_type": "m5.xlarge"
+    "instance_type": "m5.xlarge",
+    "stack_name": "buildkite"
   },
 
   "builders": [
@@ -22,7 +23,7 @@
       "spot_price": "auto",
       "spot_price_auto_product": "Linux/UNIX (Amazon VPC)",
       "ssh_username": "ec2-user",
-      "ami_name": "buildkite-stack-linux-{{user `arch`}}-{{isotime | clean_ami_name}}",
+      "ami_name": "{{user `stack_name`}}-stack-linux-{{user `arch`}}-{{isotime | clean_ami_name}}",
       "ami_description": "Buildkite Elastic Stack (Amazon Linux 2 LTS w/ docker)",
       "ami_groups": ["all"]
     }

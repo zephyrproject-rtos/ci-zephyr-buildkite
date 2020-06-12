@@ -73,7 +73,7 @@ build/linux-ami.txt: packer-linux.output env-AWS_REGION
 	grep -Eo "$(AWS_REGION): (ami-.+)" $< | cut -d' ' -f2 | xargs echo -n > $@
 
 # Build linux packer image
-packer-linux.output: $(PACKER_LINUX_FILES)
+packer-linux.output: $(PACKER_LINUX_FILES) env-STACK_NAME
 	docker run \
 		-e AWS_DEFAULT_REGION  \
 		-e AWS_PROFILE \
@@ -87,6 +87,7 @@ packer-linux.output: $(PACKER_LINUX_FILES)
 		-w /src/packer/linux \
 		hashicorp/packer:1.0.4 build -var 'ami=$(AMZN_LINUX2_AMI)' -var 'region=$(AWS_REGION)' \
 			-var 'arch=$(ARCH)' -var 'instance_type=$(INSTANCE_TYPE)' \
+			-var 'stack_name=$(STACK_NAME)' \
 			buildkite-ami.json | tee $@
 
 build/windows-ami.txt: packer-windows.output env-AWS_REGION
