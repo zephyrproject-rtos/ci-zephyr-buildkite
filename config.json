@@ -25,7 +25,7 @@
   },
   {
     "ParameterKey": "RootVolumeSize",
-    "ParameterValue": "30"
+    "ParameterValue": "50"
   },
   {
     "ParameterKey": "MaxSize",
