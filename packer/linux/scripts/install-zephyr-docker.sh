@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu -o pipefail
 
-DOCKER_ZEPHYR_CI_TAG=v0.11.8
+DOCKER_ZEPHYR_CI_TAG=v0.11.16
 
 # Since EnableDockerUserNamespaceRemap is true we need to mimic
 # the setting of userns-remap when we pull the docker image
