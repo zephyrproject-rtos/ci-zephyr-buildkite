@@ -11,3 +11,6 @@ rm -fr ./makeself-${MAKESELF_VERSION}*
 
 # tree used by sdk-ng
 sudo yum install -y tree
+
+# install junit tools
+sudo pip3 install junit2html junitparser
