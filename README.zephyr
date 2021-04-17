@@ -1,0 +1,21 @@
+1. config.json needs to be updated with the BuildkiteAgentToken:
+
+The following needs to be added to config.json:
+
+  {
+    "ParameterKey": "BuildkiteAgentToken",
+    "ParameterValue": "def123abc...24234"
+  },
+
+To use this we do:
+
+$ make STACK_NAME=buildkite-zephyr
+
+This will build a new AMI image via packer and publish it to
+AWS.  Additionally this populates the build/ dir
+
+To update the cloud-formation we do:
+
+$ make STACK_NAME=buildkite-zephyr update-stack
+
+This expects that the build dir is populated.
