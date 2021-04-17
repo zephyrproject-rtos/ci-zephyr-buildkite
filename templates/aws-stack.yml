@@ -980,6 +980,7 @@ Resources:
   AgentAutoScaleGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
+      NewInstancesProtectedFromScaleIn: true
       VPCZoneIdentifier: !If [ "CreateVpcResources", [ !Ref Subnet0, !Ref Subnet1 ], !Ref Subnets ]
       MixedInstancesPolicy:
         InstancesDistribution:
