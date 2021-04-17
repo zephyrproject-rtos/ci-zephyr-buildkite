@@ -63,9 +63,9 @@ build/aws-stack.yml:
 # -----------------------------------------
 # AMI creation with Packer
 
-packer: packer-linux-amd64.output packer-linux-arm64.output
+packer: packer-linux-amd64.output
 
-build/mappings.yml: build/linux-amd64-ami.txt build/linux-arm64-ami.txt
+build/mappings.yml: build/linux-amd64-ami.txt
 	mkdir -p build
 	printf "Mappings:\n  AWSRegion2AMI:\n    %q : { linuxamd64: %q, linuxarm64: %q, windows: %q }\n" \
 		"$(AWS_REGION)" $$(cat build/linux-amd64-ami.txt) $$(cat build/linux-arm64-ami.txt) > $@
