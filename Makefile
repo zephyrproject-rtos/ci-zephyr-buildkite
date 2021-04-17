@@ -183,10 +183,10 @@ generate-toc:
 		-c "npm install -g markdown-toc && cd /app && markdown-toc -i README.md"
 
 build/s3secrets-helper-linux-amd64:
-	cd plugins/secrets/s3secrets-helper && GOOS=linux GOARCH=amd64 go build -o ../../../$@
+	cd plugins/secrets/s3secrets-helper && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ../../../$@
 
 build/s3secrets-helper-linux-arm64:
-	cd plugins/secrets/s3secrets-helper && GOOS=linux GOARCH=arm64 go build -o ../../../$@
+	cd plugins/secrets/s3secrets-helper && CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o ../../../$@
 
 build/s3secrets-helper-windows-amd64.exe:
-	cd plugins/secrets/s3secrets-helper && GOOD=windows GOARCH=amd64 go build -o ../../../$@
+	cd plugins/secrets/s3secrets-helper && CGO_ENABLED=0 GOOD=windows GOARCH=amd64 go build -o ../../../$@
